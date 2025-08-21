@@ -54,7 +54,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'adminapp.views.sessioncheckadmin_middleware',
-        'studentapp.views.sessioncheckuser_middleware',
+    'studentapp.views.sessioncheckuser_middleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
+
 ]
 
 ROOT_URLCONF = 'my1.urls'
