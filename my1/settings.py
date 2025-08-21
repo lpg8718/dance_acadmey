@@ -26,7 +26,7 @@ SECRET_KEY = '_5g80$$8(kpp+fzxmvug&n4xv+5raybfcx-okh2=0of1x6v@@*'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['192.168.0.198', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['*']
 
 
 
@@ -142,3 +142,4 @@ import os
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
