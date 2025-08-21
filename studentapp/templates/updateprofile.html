@@ -1,0 +1,139 @@
+{% extends "masterpage.html" %}
+{% load static %}
+
+{% block navbar %}
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0"></div>
+            <a href="/studenthome/" class="btn btn-primary rounded-pill py-2 px-4">Student  Home</a>
+            <a href="/studenthome/student_course_list/" class="btn btn-primary rounded-pill py-2 px-4">Course List</a>
+            <a href="/studenthome/student_batch_list/" class="btn btn-primary rounded-pill py-2 px-4">Batch List</a>
+            <a href="/studenthome/enroll_batch/" class="btn btn-primary rounded-pill py-2 px-4">My Batch</a>
+            <a href="/studenthome/gallery1/" class="btn btn-primary rounded-pill py-2 px-4">Gallery</a>
+            <a href="/studenthome/updateprofile/" class="btn btn-primary rounded-pill py-2 px-4">Update Profile</a>
+             <a href="/studenthome/profile/" class="btn btn-primary rounded-pill py-2 px-4">View Profile</a>
+            <a href="/studenthome/logout1/" class="btn btn-primary rounded-pill py-2 px-4">Logout</a>
+            <a class="navbar-brand p-0">
+        
+              <img src='{{ image }}' style="zoom: 130%;" alt="image" value="image" >
+      
+              </a>
+        </div>
+    </nav>
+</div>
+{% endblock %}
+
+{% block main1 %}
+
+<link href="{% static 'css/register.css' %}" rel="stylesheet">
+
+<link href="{% static 'css/adminhome.css' %}" rel="stylesheet">
+
+<div class="div_register" >
+ <section class="container_register">
+      <header>Student Update</header>
+      <h3 align="center" style="color: rgb(0, 255, 42);"><span>{{ msg1 }}</span></h3>
+      <h3 align="center" style="color: rgb(255, 2, 2);"><span>{{ msg2 }}</span></h3>
+      </br>
+      {% for x in res %}
+      <form action="" method="post" class="form" >
+        {% csrf_token %}
+        <div class="input-box">
+          <label>ID</label>
+          <input type="text" name="id" value="{{ x.id }}" required readonly />
+        </div>
+        <div class="input-box">
+          <label>Full Name</label>
+          <input type="text" name="fnm" placeholder="Enter full name" value="{{ x.fnm }}" required />
+        </div>
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="Enter email address" value="{{ x.email }}" readonly />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="number" name="mno" placeholder="Enter phone number" value="{{ x.mno}}" required />
+          </div>
+          <div class="input-box">
+            <label>Birth Date</label>
+            <input type="date" name="dob" placeholder="Enter birth date" value="{{ x.dob }}" required />  <!-- pattern="\d{4}-\d{2}-\d{2}" -->
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Password</label>
+            <input type="text" name="pwd" placeholder="Enter Password" value="{{ x.pwd }}" required />
+          </div>
+          <div class="input-box">
+            <label>Confirm Password</label>
+            <input type="text" placeholder="Enter Confirm Password" value="{{ x.pwd }}" required />
+          </div>
+        </div>
+
+        <div class="gender-box">
+          <label>select gender: </label>{{ x.gender }}
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" value="male" checked />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" value="female"/>
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" value="NA" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box address">
+        
+          <label>Address</label>
+          <input type="text" name="address1" value="{{ x.address1 }}" placeholder="Enter street address" required />
+          <input type="text" name="address2" value="{{ x.address2 }}" placeholder="Enter street address line 2" required />
+          <label>select country: </label>{{ x.country }}
+          <div class="column">
+            <div class="select-box">
+              <select name="country"  required>
+                <option value="America">America</option>
+                <option value="Japan">Japan</option>
+                <option value="India">India</option>
+                <option value="Nepal">Nepal</option>
+              </select>
+            </div>
+            <input type="text" name="city" value="{{ x.city }}" placeholder="Enter your city" required />
+          </div>
+          <div class="column">
+            <input type="text" name="region" value="{{ x.region }}" placeholder="Enter your region" required />
+            <input type="number" name="pin" value="{{ x.pin }}" placeholder="Enter postal code" required />
+          </div>
+        </div>
+        <button>Submit</button>
+      </form>
+      {% endfor %}
+    </section>
+</div>
+
+
+{% endblock %}
+
+{% block about %}{% endblock %}
+{% block service %}{% endblock %}
+{% block courses %}{% endblock %}
+{% block booking %}{% endblock %}
+{% block process %}{% endblock %}
+{% block teacher %}{% endblock %}
+{% block happy_students %}{% endblock %}

@@ -1,0 +1,92 @@
+{% extends "masterpage.html" %}
+{% load static %}
+
+{% block navbar %}
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            {% comment %} <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>T</h1> {% endcomment %}
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                {% comment %} <a href="/" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Contact</a> {% endcomment %}
+            </div>
+            <a href="/" class="btn btn-primary rounded-pill py-2 px-4">Home</a>
+            <!-- <a href="#" class="btn btn-primary rounded-pill py-2 px-4">About</a> -->
+            <a href="/courselist1/" class="btn btn-primary rounded-pill py-2 px-4">Course's</a>
+            <a href="/batchlist1/" class="btn btn-primary rounded-pill py-2 px-4">Batch's</a>
+            <a href="/contect/" class="btn btn-primary rounded-pill py-2 px-4">Contect</a>
+            <a href="/register/" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+            <a href="/login/" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+        </div>
+    </nav>
+</div>
+
+{% endblock %}
+
+
+{% block main1 %}
+<link href="{% static 'css/login.css' %}" rel="stylesheet">
+
+<div class="container-xxl py-5 destination">
+    <div class="container" style="margin-top: 50px;">
+        <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+            <h6 class="section-title bg-white text-center text-primary px-3"></h6>
+            <h1 class="">Gallery</h1>
+        </div> 
+
+    <div class="container py-5">
+        <div class="row">
+         {% for x in res %}
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="rounded overflow-hidden mb-2">
+                    <img class="img-fluid" src="{{ x.image.url }}" alt="">
+                    <div class="bg-secondary p-4">
+                        <div class="d-flex justify-content-between mb-3">
+                           
+                        </div>
+                        <a class="h5" href="">{{ x.name }}</a>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+{% endblock %}
+
+
+{% block about %}
+
+{% endblock %}
+
+
+{% block service %}
+
+{% endblock %}
+
+{% block courses %}
+
+{% endblock %}
+
+{% block booking %}
+
+{% endblock %}
+
+{% block process %}
+
+{% endblock %}
+
+{% block teacher %}
+
+{% endblock %}
+
+{% block happy_students %}
+
+{% endblock %}

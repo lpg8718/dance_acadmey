@@ -1,0 +1,104 @@
+{% extends "adminhome.html" %}
+{% load static %}
+
+{% block navbar %}
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0"></div>
+            <a href="/studenthome/" class="btn btn-primary rounded-pill py-2 px-4">Student  Home</a>
+            <a href="/studenthome/student_course_list/" class="btn btn-primary rounded-pill py-2 px-4">Course List</a>
+            <a href="/studenthome/student_batch_list/" class="btn btn-primary rounded-pill py-2 px-4">Batch List</a>
+            <a href="/studenthome/enroll_batch/" class="btn btn-primary rounded-pill py-2 px-4">My Batch</a>
+            <a href="/studenthome/gallery1/" class="btn btn-primary rounded-pill py-2 px-4">Gallery</a>
+            <a href="/studenthome/updateprofile/" class="btn btn-primary rounded-pill py-2 px-4">Update Profile</a>
+             <a href="/studenthome/profile/" class="btn btn-primary rounded-pill py-2 px-4">View Profile</a>
+            <a href="/studenthome/logout1/" class="btn btn-primary rounded-pill py-2 px-4">Logout</a>
+            <a class="navbar-brand p-0">
+        
+              <img src='{{ image }}' style="zoom: 130%;" alt="image" value="image" >
+      
+              </a>
+        </div>
+    </nav>
+</div>
+{% endblock %}
+
+{% block main1 %}
+<link href="{% static 'css/register.css' %}" rel="stylesheet">
+
+<div class="div_register" >
+ <section class="container_register">
+      <header>Profile</header>
+       {% for x in res %}
+      <form class="form" >
+
+        <div align="center">
+          <img id="imagePreview" src="{{ x.image.url  }}" alt="" style="width: 150px; height: 150px; border-radius: 50%; background-color: bisque;">
+       </div>
+
+        <div class="input-box">
+          <label>Full Name</label>
+          <input value="{{ x.fnm }}" readonly/>
+        </div>
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input value="{{ x.email }}" readonly />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input value="{{ x.mno }}" readonly/>
+          </div>
+          <div class="input-box">
+            <label>Birth Date</label>
+            <input value="{{ x.dob }}" readonly/>
+          </div>
+        </div>
+
+        <div class="input-box">
+          <label>Gender</label>
+          <input value="{{ x.gender }}" readonly />
+        </div>
+
+        <div class="input-box address">
+          <label>Address</label>
+          <input  value="{{ x.address1 }}" readonly  />
+          <input value="{{ x.address2 }}" readonly />
+          
+          <div class="column">
+            
+              <input value="{{ x.country }}" readonly>
+            
+            <input value="{{ x.city }}" readonly/>
+          </div>
+          <div class="column">
+            <input value="{{ x.region }}" readonly/>
+            <input value="{{ x.pin }}" readonly/>
+          </div>
+        </div>
+      </form>
+      {% endfor %}
+    </section>
+</div>
+
+<script>
+  function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function() {
+          var output = document.getElementById('imagePreview');
+          output.src = reader.result;
+          output.style.display = 'block'; // Show the image preview
+      }
+      reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+{% endblock %}

@@ -1,0 +1,155 @@
+{% extends "masterpage.html" %}
+{% load static %}
+
+{% block navbar %}
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            {% comment %} <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>T</h1> {% endcomment %}
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                {% comment %} <a href="/" class="nav-item nav-link active">Home</a>
+                <a href="#" class="nav-item nav-link">About</a>
+                <a href="#" class="nav-item nav-link">Contact</a> {% endcomment %}
+            </div>
+            <a href="/" class="btn btn-primary rounded-pill py-2 px-4">Home</a>
+            <!-- <a href="#" class="btn btn-primary rounded-pill py-2 px-4">About</a> -->
+            <a href="/courselist1/" class="btn btn-primary rounded-pill py-2 px-4">Course's</a>
+            <a href="/batchlist1/" class="btn btn-primary rounded-pill py-2 px-4">Batch's</a>
+            <a href="contect/" class="btn btn-primary rounded-pill py-2 px-4">Contect</a>
+            <a href="/gallery/" class="btn btn-primary rounded-pill py-2 px-4">Gallery</a>
+            <a href="/register/" class="btn btn-primary rounded-pill py-2 px-4">Register</a>
+            <a href="/login/" class="btn btn-primary rounded-pill py-2 px-4">Login</a>
+        </div>
+    </nav>
+</div>
+
+{% endblock %}
+
+
+{% block main1 %}
+
+<link href="{% static 'css/style.css' %}" rel="stylesheet">
+
+<div class="container-fluid contact py-5">
+            <div class="container py-5">
+                <div class="pb-5">
+                    <h4 style="margin-top: 10px;" class="text-secondary sub-title fw-bold wow fadeInUp" data-wow-delay="0.1s">Contact Us</h4>
+                    <h1 class="display-2 mb-0 wow fadeInUp" data-wow-delay="0.3s">Get In Touch</h1>
+                </div>
+                <div class="bg-light rounded p-4 pb-0">
+                    <div class="row g-5 align-items-center">
+                        <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0.1s">
+                            <h2 class="display-5 mb-2">Contect</h2>
+                              <form method="post">
+                              {% csrf_token %}
+                                <div class="row g-3">
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" name="name" id="name" placeholder="Your Name">
+                                            <label for="name">Your Name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="phone" class="form-control" name="mno" id="phone" placeholder="Phone">
+                                            <label for="phone">Your Phone</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="email" class="form-control" name="email" id="email" placeholder="Your Email">
+                                            <label for="email">Your Email</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" class="form-control" id="subject"name="subject" placeholder="Subject">
+                                            <label for="subject">Subject</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <textarea class="form-control" placeholder="Leave a message here" name="msg" id="message" style="height: 160px"></textarea>
+                                            <label for="message">Message</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <input type="submit" style="background-color: rgb(100, 156, 43);" class="btn btn-primary w-100 py-3" value="Send Message">
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="col-lg-6 wow fadeInRight" data-wow-delay="0.3s">
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="mb-3"><i class="fa fa-home fa-2x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>Addresses</h4>
+                                    <p class="mb-0">Universal informatic indore , india</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="mb-3"><i class="fa fa-map-marker-alt fa-2x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>Addresses</h4>
+                                    <p class="mb-0">12, Abhay Prashal, Indore, India</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="mb-3"><i class="fa fa-phone-alt fa-2x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>Mobile</h4>
+                                    <p class="mb-0">+91 8718068669</p>
+                                    <p class="mb-0">+91 8137999421</p>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center mb-5">
+                                <div class="mb-3"><i class="fa fa-envelope-open fa-2x text-primary"></i></div>
+                                <div class="ms-4">
+                                    <h4>Email</h4>
+                                    <p class="mb-0">universalinfo@gmail.com</p>
+                                    <p class="mb-0">lalitpatidar23102002@gmail.com</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Contact End -->
+
+        {% endblock %}
+
+{% block about %}
+
+{% endblock %}
+
+
+{% block service %}
+
+{% endblock %}
+
+{% block courses %}
+
+{% endblock %}
+
+{% block booking %}
+
+{% endblock %}
+
+{% block process %}
+
+{% endblock %}
+
+{% block teacher %}
+
+{% endblock %}
+
+{% block happy_students %}
+
+{% endblock %}

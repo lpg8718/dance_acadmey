@@ -1,0 +1,177 @@
+{% extends "masterpage.html" %}
+{% load static %}
+
+
+{% block navbar %}
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            {% comment %} <h1 class="text-primary m-0"><i class="fa fa-map-marker-alt me-3"></i>T</h1> {% endcomment %}
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0">
+                {% comment %} <a href="/" class="nav-item nav-link active">Home</a>
+                <!-- <a href="#" class="nav-item nav-link">About</a> -->
+                <a href="#" class="nav-item nav-link">Contact</a> {% endcomment %}
+            </div>
+                <a href="/adminhome/" class="btn btn-primary rounded-pill py-2 px-4">Home</a>
+                <a href="#" class="btn btn-primary rounded-pill py-2 px-4">About</a>
+                <a href="/adminhome/contect/" class="btn btn-primary rounded-pill py-2 px-4">Contect</a>
+                <a href="/adminhome/admin_update_profile/" class="btn btn-primary rounded-pill py-2 px-4"> Profile Update</a>
+                <a href="/adminhome/" class="btn btn-primary rounded-pill py-2 px-4">Back</a>
+        </div>
+        <a class="navbar-brand p-0">
+        
+          <img src='{{ img }}' style="zoom: 130%;" alt="image" value="image" >
+          
+      </a>
+    </nav>
+</div>
+
+{% endblock %}
+
+{% block main1 %}
+
+    <link href="{% static 'css/register.css' %}" rel="stylesheet">
+
+<div class="div_register" >
+ <section class="container_register">
+      <header>Add Teacher</header>
+      <h3 align="center" style="color: rgb(0, 255, 42);"><span>{{ msg1 }}</span></h3>
+      <h3 align="center" style="color: rgb(255, 2, 2);"><span>{{ msg2 }}</span></h3>
+      </br>
+      <div align="center">
+        <img id="imagePreview" src="{% static 'images/profileicon.jpg' %}" alt="" style="width: 150px; height: 150px; border-radius: 50%; background-color: bisque;">
+  </div>
+      <form action="" method="post" enctype="multipart/form-data" class="form" >
+        {% csrf_token %}
+
+
+        <div class="input-box">
+          <label>image</label>
+          <input type="file" name="image" required accept="image/*" onchange="previewImage(event)">
+                 
+        </div>
+
+        <div class="input-box">
+          <label>Full Name</label>
+          <input type="text" name="fnm" placeholder="Enter full name" required />
+        </div>
+
+        <div class="input-box">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="Enter email address" required />
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Phone Number</label>
+            <input type="text" name="mno" placeholder="Enter phone number" required />
+          </div>
+          <div class="input-box">
+            <label>Birth Date</label>
+            <input type="date" name="dob" placeholder="Enter birth date" required />  <!-- pattern="\d{4}-\d{2}-\d{2}" -->
+          </div>
+        </div>
+
+        <div class="column">
+          <div class="input-box">
+            <label>Password</label>
+            <input type="text" name="pwd" placeholder="Enter Password" required />
+          </div>
+          <div class="input-box">
+            <label>Confirm Password</label>
+            <input type="text" placeholder="Enter Confirm Password" required />
+          </div>
+        </div>
+
+        <div class="gender-box">
+          <h3>Gender</h3>
+          <div class="gender-option">
+            <div class="gender">
+              <input type="radio" id="check-male" name="gender" value="male" checked />
+              <label for="check-male">male</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-female" name="gender" value="female"/>
+              <label for="check-female">Female</label>
+            </div>
+            <div class="gender">
+              <input type="radio" id="check-other" name="gender" value="NA" />
+              <label for="check-other">prefer not to say</label>
+            </div>
+          </div>
+        </div>
+        <div class="input-box address">
+          <label>Address</label>
+          <input type="text" name="address1" placeholder="Enter street address" required />
+          <input type="text" name="address2" placeholder="Enter street address line 2" required />
+          <div class="column">
+            <div class="select-box">
+              <select name="country" required>
+                <option hidden>Country</option>
+                <option value="America">America</option>
+                <option value="Japan">Japan</option>
+                <option value="India">India</option>
+                <option value="Nepal">Nepal</option>
+              </select>
+            </div>
+            <input type="text" name="city" placeholder="Enter your city" required />
+          </div>
+          <div class="column">
+            <input type="text" name="region" placeholder="Enter your region" required />
+            <input type="number" name="pin" placeholder="Enter postal code" required />
+          </div>
+        </div>
+        <button>Submit</button>
+      </form>
+      
+<script>
+  function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function() {
+          var output = document.getElementById('imagePreview');
+          output.src = reader.result;
+          output.style.display = 'block'; // Show the image preview
+      }
+      reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+
+    </section>
+</div>
+
+{% endblock %}
+
+{% block about %}
+
+{% endblock %}
+
+
+{% block service %}
+
+{% endblock %}
+
+{% block courses %}
+
+{% endblock %}
+
+{% block booking %}
+
+{% endblock %}
+
+{% block process %}
+
+{% endblock %}
+
+{% block teacher %}
+
+{% endblock %}
+
+{% block happy_students %}
+
+{% endblock %}

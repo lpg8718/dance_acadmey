@@ -1,0 +1,96 @@
+{% extends "adminhome.html" %}
+{% load static %}
+
+{% block navbar %}
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0"></div>
+            <a href="/adminhome/" class="btn btn-primary rounded-pill py-2 px-4">Admin Home</a>
+            <!-- <a href="#" class="btn btn-primary rounded-pill py-2 px-4">About</a> -->
+            <a href="/adminhome/contect/" class="btn btn-primary rounded-pill py-2 px-4">Contact</a>
+            <a href="/adminhome/admin_update_profile/" class="btn btn-primary rounded-pill py-2 px-4"> Profile Update</a>
+            <a href="/adminhome/" class="btn btn-primary rounded-pill py-2 px-4">Back</a>
+        </div>
+        <a class="navbar-brand p-0">
+        
+            <img src='{{ img }}' style="zoom: 130%;" alt="image" value="image" >
+            
+        </a>
+    </nav>
+</div>
+{% endblock %}
+
+{% block main1 %}
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet">
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+<link href="{% static 'css/courselist.css' %}" rel="stylesheet">
+<body>
+    <div class="main-content">
+        <div class="search-box">
+            <h2>Search : </h2><input type="text" name="" id="search" onkeyup="search()" placeholder="search by name">
+        </div>
+        <!-- Student Management Section -->
+        <section class="student-management">
+            <h2>Student Update</h2>
+             <table class="student-table" id="studentTable">
+                    <tr>
+                        <th> ID</th>
+                        <th>first name</th>
+                        <th>Mobaile no</th>
+                        <th>email</th>
+                        <th>gender</th>
+                        <th>state</th>
+                        <th>password</th>
+                        <th>role</th>
+                        <th>Action</th>
+                    </tr>
+                
+                    {% for x in res %}
+                    <tr>
+                        <td>{{ x.id }}</td>
+                        <td>{{ x.fnm }}</td>
+                        <td>{{ x.mno }}</td>
+                        <td>{{ x.email }}</td>
+                        <td>{{ x.gender }}</td>
+                        <td>{{ x.city }}</td>
+                        <td>{{ x.pwd }}</td>
+                        <td>{{ x.role }}</td>
+                        <td>
+                               <a class="edit-btn" href="/adminhome/student_update_record/?id={{ x.id }}">Edit</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <!-- More students can go here -->
+            </table>
+        </section>
+    </div>
+    <script>
+    function search() {
+            let filter = document.getElementById('search').value.toUpperCase();
+            let mytable = document.getElementById("studentTable");
+            let tr = mytable.getElementsByTagName('tr');
+
+            for (var i = 0; i < tr.length; i++) {
+                let td = tr[i].getElementsByTagName('td')[1];
+
+                if (td) {
+                    let textvalue = td.textContent || td.innerHTML;
+                    if (textvalue.toUpperCase().indexOf(filter) > -1) {
+                        tr[i].style.display = "";
+                    } else {
+                        tr[i].style.display = "none"
+                    }
+                }
+            }
+        }
+    </script>
+{% endblock %}

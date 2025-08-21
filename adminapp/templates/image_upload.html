@@ -1,0 +1,75 @@
+{% extends "adminhome.html" %}
+{% load static %}
+
+{% block navbar %}
+<div class="container-fluid position-relative p-0">
+    <nav class="navbar navbar-expand-lg navbar-light px-4 px-lg-5 py-3 py-lg-0">
+        <a href="" class="navbar-brand p-0">
+            <img src="{% static 'images/logo.png' %}" alt="Logo">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+            <span class="fa fa-bars"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <div class="navbar-nav ms-auto py-0"></div>
+            <a href="/adminhome/" class="btn btn-primary rounded-pill py-2 px-4">Admin Home</a>
+            <!-- <a href="#" class="btn btn-primary rounded-pill py-2 px-4">About</a> -->
+            <a href="/adminhome/contect/" class="btn btn-primary rounded-pill py-2 px-4">Contact</a>
+            <a href="/adminhome/admin_update_profile/" class="btn btn-primary rounded-pill py-2 px-4"> Profile Update</a>
+            <a href="/adminhome/" class="btn btn-primary rounded-pill py-2 px-4">Back</a>
+        </div>
+         <a class="navbar-brand p-0">
+        
+        <img src='{{ img }}' style="zoom: 130%;" alt="image" value="image" >
+        
+    </a>
+    </nav>
+</div>
+{% endblock %}
+
+{% block main1 %}
+
+<link href="{% static 'css/register.css' %}" rel="stylesheet">
+
+<div class="div_register" >
+ <section class="container_register">
+      <header>Event image upload</header>
+      <h3 align="center" style="color: rgb(0, 255, 42);"><span>{{ msg1 }}</span></h3>
+      <h3 align="center" style="color: rgb(255, 2, 2);"><span>{{ msg2 }}</span></h3>
+    </br>
+    <div align="center">
+        <img id="imagePreview" src="{% static 'images/profileicon.jpg' %}" alt="" style="width: 150px; height: 150px; border-radius: 50%; background-color: bisque;">
+  </div>
+      <form action="" method="post"  enctype="multipart/form-data" class="form" >
+        {% csrf_token %}
+{% comment %} =================================================== {% endcomment %}
+        <div class="input-box">
+          <label>image</label><span class="imp">*</span>
+          <input type="file" name="image" id="image" required accept="image/*" onchange="previewImage(event)">
+          <span id="s1"></span>
+      </div>
+
+{% comment %} ==================================================== {% endcomment %}
+        <div class="input-box">
+          <label> Name</label><span class="imp">*</span>
+          <input type="text" name="name" id="name" placeholder="event name" required />
+       
+        </div>
+        <button>Submit</button>
+      </form>
+    </section>
+</div>
+
+<script>
+  function previewImage(event) {
+      var reader = new FileReader();
+      reader.onload = function() {
+          var output = document.getElementById('imagePreview');
+          output.src = reader.result;
+          output.style.display = 'block'; // Show the image preview
+      }
+      reader.readAsDataURL(event.target.files[0]);
+  }
+</script>
+
+    {% endblock %}
